@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-6">
+        <h1>Crear tarea</h1>
+        <form #createTask= "ngForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tarea</mat-label>
+                    <input matInput type="text" #title="ngModel" [(ngModel)]="task.title" name=taskTitle class="form-control" required >
+                    <mat-hint>Título de la tarea</mat-hint>
+                </mat-form-field>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button> 
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <!--ul class="list-group">
+            <li *ngFor="let item of taskList" class="list-group-item">{{item.title}}</li>
+            
+        </ul-->
+        <mat-spinner *ngIf="!resourcesLoaded === false"></mat-spinner>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel *ngFor="let item of taskList">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{item.title}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-checkbox class="example-margin" [checked]="item.check" [disabled]="disabled" (change)="update(item._id, item.check)"></mat-checkbox>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                {{item.body}}
+            </mat-expansion-panel>
+        </mat-accordion>
+        
+    </div>
+</div>
