@@ -19,18 +19,19 @@
         </ul-->
         <mat-spinner *ngIf="!resourcesLoaded === false"></mat-spinner>
         <mat-accordion class="example-headers-align" multi>
-            <mat-expansion-panel *ngFor="let item of taskList">
+            <mat-expansion-panel *ngFor="let item of this.taskList">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        {{item.title}}
+                        {{item.title}}  
                     </mat-panel-title>
                     <mat-panel-description>
-                        <mat-checkbox class="example-margin" [checked]="item.check" [disabled]="disabled" (change)="update(item._id, item.check)"></mat-checkbox>
+                        
+                        <mat-checkbox class="example-margin" [(ngModel)]="item.check" [disabled]="disabled" (change)="update(item._id, item.check)"></mat-checkbox>
+                        {{item.check}}
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 {{item.body}}
             </mat-expansion-panel>
         </mat-accordion>
-        
     </div>
 </div>

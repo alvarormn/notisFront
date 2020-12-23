@@ -31,6 +31,8 @@ export class TaskService {
     let params = JSON.stringify({
       check: value
     });
+    console.log(params);
+    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.put(`${this.url}/task/update/${task_to_update}`,params,{ headers: headers });
   }
