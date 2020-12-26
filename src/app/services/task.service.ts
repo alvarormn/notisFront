@@ -18,6 +18,8 @@ export class TaskService {
 
   createTask(task_to_create) {
     let params = JSON.stringify(task_to_create);
+    console.log(params);
+    
 
     const headers = new HttpHeaders({'Content-Type':'application/json'});
     return this._http.post(this.url+'/task/new', params, {headers: headers});
@@ -31,10 +33,16 @@ export class TaskService {
     let params = JSON.stringify({
       check: value
     });
-    console.log(params);
     
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.put(`${this.url}/task/update/${task_to_update}`,params,{ headers: headers });
+  }
+
+  deleteTask(item) {
+    let params = item;
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.delete(`${this.url}/task/delete/${params}`,{ headers: headers });
   }
 
 }

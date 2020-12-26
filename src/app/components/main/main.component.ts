@@ -19,32 +19,33 @@ export class MainComponent implements OnInit {
   public resourcesLoaded = false;
   public disabled = false;
   public state: Boolean;
+  public date: Date;
 
   constructor(
     private _taskService:TaskService
   ) {
-    this.task = new Task('','','',false);
+    this.task = new Task('','','',false,null);
   }
 
   ngOnInit(): void {
+    this.getListTask();
+  }
 
+  getListTask() {
     this._taskService.getList().subscribe(
       result => {
         
         this.taskList = result.list;
-        console.log(this.taskList);
       },
       error => {
         console.log(error);
       }
     )
-
   }
 
   update(taskID, valueCB) {
     this.resourcesLoaded = true;
     this.disabled = true;
-    console.log(valueCB);
     
     this._taskService.updateTask(taskID,valueCB).subscribe(
       result => {
@@ -60,22 +61,31 @@ export class MainComponent implements OnInit {
     
   }
 
+  delete(item) {
+    this._taskService.deleteTask(item).subscribe(
+      result => {
+        this.getListTask();
+      },
+      error => {
+        console.error(error);
+        
+      }
+    )
+  }
+
   onSubmit() {
+    let milisecond = new Date();
+    this.task.date = milisecond.getTime();
+   
     this._taskService.createTask(this.task).subscribe(
       result => {
-        console.log(result);
-        this.task = new Task('','','',false);
+        this.task = new Task('', '', '', false,null);
+        this.getListTask();
       },
       error => {
         console.log(error);
       }
     )
-    
-  }
-
-  //borrar
-  check() {
-    console.log(this.state);
     
   }
 

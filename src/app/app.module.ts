@@ -15,7 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatListModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

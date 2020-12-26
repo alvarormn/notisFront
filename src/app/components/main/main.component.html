@@ -5,8 +5,14 @@
             <div class="mb-3">
                 <mat-form-field appearance="outline">
                     <mat-label>Tarea</mat-label>
-                    <input matInput type="text" #title="ngModel" [(ngModel)]="task.title" name=taskTitle class="form-control" required >
+                    <input matInput type="text" #title="ngModel" [(ngModel)]="task.title" name="taskTitle" class="form-control" required >
                     <mat-hint>Título de la tarea</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="mb-3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Textarea</mat-label>
+                    <textarea matInput #body="ngModel" [(ngModel)]="task.body" name="taskBody" class="form-control"></textarea>
                 </mat-form-field>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button> 
@@ -24,13 +30,11 @@
                     <mat-panel-title>
                         {{item.title}}  
                     </mat-panel-title>
-                    <mat-panel-description>
-                        
-                        <mat-checkbox class="example-margin" [(ngModel)]="item.check" [disabled]="disabled" (change)="update(item._id, item.check)"></mat-checkbox>
-                        {{item.check}}
-                    </mat-panel-description>
+                    <mat-checkbox class="example-margin" [(ngModel)]="item.check" [disabled]="disabled" (change)="update(item._id, item.check)"></mat-checkbox>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="delete(item._id)">delete</mat-icon>
                 </mat-expansion-panel-header>
                 {{item.body}}
+                
             </mat-expansion-panel>
         </mat-accordion>
     </div>
