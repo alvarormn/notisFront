@@ -16,13 +16,22 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import {MatButtonModule} from '@angular/material/button';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { TestCalComponent } from './components/test-cal/test-cal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    ToolbarComponent,
+    CalendarComponent,
+    TestCalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatExpansionModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
